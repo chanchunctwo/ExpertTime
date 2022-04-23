@@ -1,0 +1,33 @@
+<?php
+/** @var \PPhong\ProductDonate\Block\Catalog\Product\View $block  */
+$isEnable = $block->isEnable();
+$priceHelper = $this->helper('Magento\Framework\Pricing\Helper\Data');
+?>
+
+<?php if( $isEnable ): ?>
+    <div class="container donate-block block">
+        <h3 class="donate-block__title"><?= $block->getTitle(); ?></h3>
+        <div class="donate-block__wrapper">
+            <?php
+            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+            $storeManager = $objectManager->create('\Magento\Store\Model\StoreManagerInterface');
+            $baseURL_l = $social_image_url = $storeManager->getStore()->getBaseUrl();
+            ?>
+            <form action="<?php /* @escapeNotVerified */ echo $baseURL_l . 'productdonate/index/donate' ?>" method="post" id="donateForm" enctype="multipart/form-data" autocomplete="off" data-mage-init='{"validation":{}}' data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>">
+                <div class="field required">
+                    <input type="hidden" name="is_donate" value="1"/>
+                    <img class="banner" src="<?= $block->getBannerUrl() ?>" title="<?= $block->getTitle() ?>"/>
+                    <span class="description" ><?= $block->getDescription(); ?></span>
+                    <input type="number" name="donate-value" value="<?= $block->getAmount() ?>" data-validate="{required:true}"/>
+                    <div class="primary">
+                        <button type="submit" class="action submit primary" id="donate-btn" title="<?php /* @escapeNotVerified */ echo __('Donate') ?>"  data-mage-init='{"donate_js":{}}'>
+                            <span><?php /* @escapeNotVerified */ echo __('Donate') ?></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+<?php endif; ?>
+
+

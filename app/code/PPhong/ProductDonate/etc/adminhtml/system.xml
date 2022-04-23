@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="pphanmage" translate="label" sortOrder="10000">
+            <label>PPhanMage - Product Donate Option</label>
+        </tab>
+
+        <section id="pp_product_donate" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Configuration</label>
+            <tab>pphanmage</tab>
+            <resource>PPhong_ProductDonate::ppmage_productdonate_config</resource>
+
+            <group id="config" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+
+                <field id="enable" translate="label" type="select"  sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable the donate option block in PDP.</comment>
+                </field>
+
+                <field id="banner" translate="label" type="Magento\Config\Block\System\Config\Form\Field\File" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" >
+                    <label>Image</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\File</backend_model>
+                    <upload_dir config="system" >pp_productdonate/banner</upload_dir>
+                </field>
+
+                <field id="title" translate="label" type="text"  sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Title</label>
+                </field>
+
+                <field id="description" translate="label" type="editor"  sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Description</label>
+                    <frontend_model>PPhong\ProductDonate\Block\Adminhtml\System\Config\Editor</frontend_model>
+                </field>
+
+                <field id="sku" translate="label" type="text"  sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>SKU</label>
+                </field>
+
+                <field id="amount" translate="label" type="text"  sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Defaut Donation amount</label>
+                    <validate>validate-greater-than-zero validate-number required-entry</validate>
+                </field>
+
+
+            </group>
+        </section>
+
+    </system>
+</config>

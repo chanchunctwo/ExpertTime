@@ -1,0 +1,13 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="PPhong_ProductDonate::css/pp_donate.css"/>
+    </head>
+    <body>
+        <!--<referenceBlock name="product.info">
+            <container name="form_top" as="form_top">
+                <block class="PPhong\ProductDonate\Block\Catalog\Product\View" name="catalog.product.view.pp_donate_extraoptions"
+                       as="pp_donate_extraoptions" before="-" template="PPhong_ProductDonate::catalog/product/view.phtml"/>
+            </container>
+        </referenceBlock>-->
+    </body>
+</page>
